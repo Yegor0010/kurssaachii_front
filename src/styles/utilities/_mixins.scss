@@ -1,0 +1,11 @@
+@mixin transitionCustom($time) {
+  transition: all $time ease-in-out;
+
+  > * {
+    transition: all $time ease-in-out;
+  }
+}
+
+@mixin transition {
+  @include transitionCustom($animationTime);
+}

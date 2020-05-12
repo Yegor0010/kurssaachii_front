@@ -1,0 +1,29 @@
+@mixin media($max) {
+  @media screen and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin media-xs {
+  @include media($xs) {
+    @content;
+  }
+}
+
+@mixin media-sm {
+  @include media($sm) {
+    @content;
+  }
+}
+
+@mixin media-md {
+  @include media($md) {
+    @content;
+  }
+}
+
+@mixin media-lg {
+  @include media($lg) {
+    @content;
+  }
+}

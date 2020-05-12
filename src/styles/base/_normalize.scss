@@ -1,0 +1,40 @@
+* {
+  font-family: inherit;
+  box-sizing: border-box;
+  outline: none !important;
+}
+
+html {
+  font-size: $fontSize;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+  font-family: $fontFamily;
+}
+
+a {
+  color: $dodgerBlue;
+  text-decoration: none;
+}
+
+@include media-md {
+  html {
+    font-size: $fontSize - 1;
+  }
+}
+
+@include media-sm {
+  html {
+    font-size: $fontSize - 2;
+  }
+}
+
+@include media-xs {
+  html {
+    font-size: $fontSize - 3;
+  }
+}
