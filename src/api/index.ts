@@ -1,19 +1,6 @@
-﻿import { ArModel, ArScenarioProject } from "../store/models/types";
+﻿import axios from 'axios';
 
-export type GetAllModelsResponse = {
-    errors: string[],
-    data: ArModel[],
-}
-
-export type GetAllScenarioProjectsResponse = {
-    errors: string[],
-    data: ArScenarioProject[],
-}
-
-export type CreateScenarioProjectResponse = {
-    errors: string[],
-    data: ArScenarioProject,
-}
+const baseUrl = 'http://localhost:3001';
 
 class BackendApi {
 
@@ -24,8 +11,22 @@ class BackendApi {
         }
     }
 
-    static getAllModelsRequest() {
-        return this.getModelsRequest('');
+    static async getStaffPositions() {
+        try {
+            const result = await axios.get(baseUrl + '/login');
+            return result.data.recordset;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
+    }
+
+    static async login(body: any) {
+        try {
+            const result = await axios.post(baseUrl + '/login', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
     }
 
     static getModelsRequest<GetAllModelsResponse>(modelType: string): Promise<GetAllModelsResponse> {
@@ -55,24 +56,6 @@ class BackendApi {
                 throw new Error(response.statusText)
             }
             return response.json() as Promise<GetAllScenarioProjectsResponse>;
-        });
-    }
-
-    static createScenarioProject<CreateScenarioProjectResponse>(arScenarioProject: ArScenarioProject): Promise<CreateScenarioProjectResponse> {
-        const headers = this.requestHeaders();
-        const body = JSON.stringify(arScenarioProject);
-
-        const request = new Request(`/api/v1/projects`, {
-            method: 'POST',
-            headers: headers,
-            body: body,
-        });
-
-        return fetch(request).then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText)
-            }
-            return response.json() as Promise<CreateScenarioProjectResponse>;
         });
     }
 

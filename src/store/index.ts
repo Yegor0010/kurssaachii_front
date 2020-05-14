@@ -6,7 +6,7 @@ import { modelsReducer } from "./models/reducers";
 
 const rootReducer = combineReducers({
     //system: systemReducer,
-    storeModelsReducer: modelsReducer
+    user: modelsReducer
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

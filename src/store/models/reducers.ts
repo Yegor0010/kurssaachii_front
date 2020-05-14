@@ -1,59 +1,21 @@
-﻿import {
-    ModelsState,    
-    ALL_MODELS_LOADED,
-    DELETE_MODELS,
-    ModelsActionTypes,
-    ALL_SCENARIO_PROJECTS_LIST_LOADED,
-    DELETE_SCENARIO_PROJECTS,
-    SET_CURRENT_PROJECT,
-    defaultArScenarioProject
-} from "./types";
+﻿import { USER_LOGGER_IN } from "./actions";
+import { IUser } from "./types";
 
-const initialState: ModelsState = {
-    storeModels: [],
-    storeScenarioProjects: [],
-    storeCurrentProject: defaultArScenarioProject,
+const initialState: IUser = {
+    userType: '',
 };
 
 export function modelsReducer(
-    state = initialState,
-    action: ModelsActionTypes
-): ModelsState {
+    state: IUser = initialState,
+    action: any
+): IUser {
+    console.log("action.type", action)
     switch (action.type) {
-        case ALL_MODELS_LOADED:
-            console.log(state);
-            console.log(action);
+        case USER_LOGGER_IN:
             return {
-                storeModels: action.payload,
-                storeScenarioProjects: state.storeScenarioProjects,
-                storeCurrentProject: state.storeCurrentProject,
-            };
-        case DELETE_MODELS:
-            return {
-                storeModels: [],
-                storeScenarioProjects: state.storeScenarioProjects,
-                storeCurrentProject: state.storeCurrentProject,
-            };
-        case ALL_SCENARIO_PROJECTS_LIST_LOADED:
-            console.log(state);
-            console.log(action);
-            return {
-                storeModels: state.storeModels,
-                storeScenarioProjects: action.payload,
-                storeCurrentProject: state.storeCurrentProject,
-            };
-        case DELETE_SCENARIO_PROJECTS:
-            return {
-                storeModels: state.storeModels,
-                storeScenarioProjects: [],
-                storeCurrentProject: state.storeCurrentProject,
-            };
-        case SET_CURRENT_PROJECT:
-            return {
-                storeModels: state.storeModels,
-                storeScenarioProjects: state.storeScenarioProjects,
-                storeCurrentProject: action.payload,
-            };
+                ...state,
+                userType: action.payload,
+            }
         default:
             return state;
     }

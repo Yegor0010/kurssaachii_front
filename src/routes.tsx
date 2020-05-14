@@ -1,15 +1,17 @@
 ﻿import React from "react";
-import { Route, HashRouter, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
 import ScrollToTop from './components/scroll-to-top';
 import Login from './pages/login';
+import Dashboard from './pages/dashboard';
 
 export default (props: any) => (
-    <HashRouter>
+    <BrowserRouter>
         <ScrollToTop>
             <Switch>
-                <Route exact path='/' component={Login} />
                 <Route exact path='/login' component={Login} />
+                <Route exact path='/' component={Dashboard} />
+                <Redirect to="/not-found" />
             </Switch>
         </ScrollToTop>
-    </HashRouter>
+    </BrowserRouter>
 )
