@@ -60,7 +60,7 @@ class Login extends Component<IProps, IState> {
                 // TODO: show error
             } else {
                 console.log("Login -> login -> result", result)
-                this.props.saveUser(this.state.userType);
+                this.props.saveUser(this.state.name, this.state.userType);
                 this.props.history.push('/');
             }
         }

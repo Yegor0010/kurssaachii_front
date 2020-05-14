@@ -28,35 +28,61 @@ class BackendApi {
             console.log("BackendApi -> getStaffPositions -> error", error)
         }
     }
-
-    static getModelsRequest<GetAllModelsResponse>(modelType: string): Promise<GetAllModelsResponse> {
-        const headers = this.requestHeaders();
-        const request = new Request(`/api/v1/models/${modelType}`, {
-            method: 'GET',
-            headers: headers
-        });
-
-        return fetch(request).then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText)
-            }
-            return response.json() as Promise<GetAllModelsResponse>;
-        });
+    static async getRoomsTypes(body: any) {
+        try {
+            const result = await axios.post(baseUrl + '/rooms-types', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
     }
-
-    static getAllScenarioProjectRequest<GetAllScenarioProjectsResponse>(): Promise<GetAllScenarioProjectsResponse> {
-        const headers = this.requestHeaders();
-        const request = new Request(`/api/v1/projects`, {
-            method: 'GET',
-            headers: headers
-        });
-
-        return fetch(request).then(response => {
-            if (!response.ok) {
-                throw new Error(response.statusText)
-            }
-            return response.json() as Promise<GetAllScenarioProjectsResponse>;
-        });
+    static async updateRoom(body: any) {
+        try {
+            const result = await axios.post(baseUrl + '/rooms-update', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
+    }
+    static async getAllRooms(body: any) {
+        try {
+            const result = await axios.post(baseUrl + '/rooms-all', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
+    }
+    static async getAvailableRooms(body: any) {
+        try {
+            const result = await axios.post(baseUrl + '/rooms', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
+    }
+    static async postBooking(body: any) {
+        try {
+            const result = await axios.post(baseUrl + '/bookings', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
+    }
+    static async getBookings(body: any) {
+        try {
+            const result = await axios.post(baseUrl + '/bookings-view', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
+    }
+    static async getRoomsStates(body: any) {
+        try {
+            const result = await axios.get(baseUrl + '/states', body);
+            return result.data;
+        } catch (error) {
+            console.log("BackendApi -> getStaffPositions -> error", error)
+        }
     }
 
 }

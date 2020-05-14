@@ -1,0 +1,40 @@
+.frontdesk-select {
+    width: 300px;
+    margin: 0 20px;
+}
+.frontdesk-wrap {
+    margin: 10px;
+}
+.frontdesk-top {
+    height: 40px;
+    display: flex;
+    margin-bottom: 20px;
+}
+.frontdesk-top h1 {
+    margin-left: auto;
+}
+.frontdesk-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.frontdesk-modal-content {
+    width: 500px;
+    height: 400px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 30px;
+}
+.frontdesk-modal-btns {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.frontdesk-modal-error {
+    color: #f44336;
+}
+.frontdesk-view-booking-btn {
+    margin-left: 20px !important;
+}

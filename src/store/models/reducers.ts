@@ -3,6 +3,7 @@ import { IUser } from "./types";
 
 const initialState: IUser = {
     userType: '',
+    userId: '',
 };
 
 export function modelsReducer(
@@ -14,7 +15,8 @@ export function modelsReducer(
         case USER_LOGGER_IN:
             return {
                 ...state,
-                userType: action.payload,
+                userType: action.payload.userType,
+                userId: action.payload.userId,
             }
         default:
             return state;
